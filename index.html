@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <title>Phone Book</title>
+  </head>
+  <body>
+        <div class="jumbotron text-center">
+                <h2>Phone Book</h2>
+                <button id="accBtn" class="btn btn-primary">All numbers</button>
+                <button id="addBtn" class="btn btn-info">Add number</button>
+                <button id="editBtn" class="btn btn-warning">Edit/Delete</button>
+                <input id="search" type="text" placeholder="Search By Last Name" required><i class="fas fa-search"></i>
+              </div>
+              <div class="container">
+                <div id="account-view" class="row">
+                  <div class="col-lg-12 col-lg-offset-3">
+                    <h3 class="page-header">Phone Book</h3>
+                    <div class="row">
+                      <div id="main-table" class="col-lg-10 col-lg-offset-1">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Telephone Number</th>
+                            </tr>
+                          </thead>
+                          <tbody id="main-tbody">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="add-view" class="row">
+                  <div class="col-lg-12 col-lg-offset-2">
+                    <h3 class="page-header">Add Account</h3>
+                    <div class="row">
+                      <div class="col-lg-10 col-lg-offset-1">
+                        <input type="text" id="form-id" placeholder="First Name" class="form-control"><br>
+                        <input type="text" id="form-name" placeholder="Last Name" class="form-control"><br>
+                        <input type="text" id="form-deposit" placeholder="Telephone number" class="form-control"><br>
+                        <p id="validate-form">You didn't input the number </p>
+                        <button id="formBtn" type="submit" class="form-control btn btn-primary">Add account</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="edit-view" class="row">
+                  <div class="col-lg-12 col-lg-offset-2">
+                    <h3 class="page-header">Edit/Delete</h3>
+                    <div class="row">
+                      <div class="col-lg-10 col-lg-offset-1">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>First Name</th>
+                              <th>Last Name</th>
+                              <th>Telephone Number</th>
+                              <th>Delete</th>
+                              <th>Edit</th>
+                            </tr>
+                          </thead>
+                          <tbody id="editTbody">
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="edit-form-view" class="row">
+                  <div class="col-lg-12 col-lg-offset-2">
+                    <h3 class="page-header">Edit Account</h3>
+                    <div class="row">
+                      <div class="col-lg-10 col-lg-offset-1">
+                        <div class="col-lg-10 col-lg-offset-1">
+                          <input type="text" id="edit-form-id"  class="form-control"><br>
+                          <input type="text" id="edit-form-name"  class="form-control"><br>
+                          <input type="text" id="edit-form-deposit"  class="form-control"><br>
+                          <button id="edit-formBtn" type="submit" class="form-control btn btn-warning">Edit account</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+<script src="main.js"></script>
+  </body>
+</html>

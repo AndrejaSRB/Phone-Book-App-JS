@@ -1,0 +1,33 @@
+.btn {
+    color: #fff;
+    text-align: center;
+}
+#add-view {
+    display: none;
+  }
+  #edit-view {
+    display: none;
+  }
+  #edit-form-view {
+    display: none;
+  }
+#search {
+    display: block;
+    margin: 15px auto;
+}
+.fa-search {
+    position: absolute;
+    right: 837px;
+    top: 163px;
+    border: 1px solid gray;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+#validate-form {
+    color: red;
+    display: none;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 20px;
+
+}
