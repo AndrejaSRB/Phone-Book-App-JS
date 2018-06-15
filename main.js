@@ -27,7 +27,7 @@ window.addEventListener('beforeunload',function () {
     let editFormCard = document.querySelector('#edit-form-cCard');
     let editFormBtn = document.querySelector('#edit-formBtn');
     let validate = document.querySelector('#validate-form');
-    let searchBtn = document.querySelector('.fa-search');
+    let searchBtn = document.querySelector('.search');
     let searchInput = document.querySelector('#search');
     let mainTable = document.querySelector('#main-table');
 
@@ -39,7 +39,13 @@ window.addEventListener('beforeunload',function () {
     editBtn.addEventListener('click',showEditTable);
     editFormBtn.addEventListener('click',addEditedAccount);
     searchBtn.addEventListener('click', searchLastName);
-    createTable(db);
+    searchInput.addEventListener('keypress', function (e) {
+      var key = e.which || e.keyCode;
+      if (key === 13) { 
+        searchLastName();
+      }
+  });
+  createTable(db);
     
 
 
@@ -51,9 +57,7 @@ for (let i = 0; i < db.length; i++) {
   let LastNames = db[i].lastName;
   if (LastNames.toUpperCase() === filter){
     results.push(db[i]);
-    
   }
-
 }
 createTable(results);
 }
@@ -77,7 +81,6 @@ createTable(results);
       accountView.style.display = "none";
       editView.style.display = "none";
       editFormView.style.display = "none";
-   
     }
     function showEditTable() {
       searchInput.style.display = "block";
@@ -86,8 +89,6 @@ createTable(results);
       accountView.style.display = "none";
       addView.style.display = "none";
       editFormView.style.display = "none"
-      
-    
       let text = "";
       for (var i = 0; i < db.length; i++) {
         text += '<tr>';
@@ -117,7 +118,6 @@ createTable(results);
       editFormId.value = currentAccount.id;
       editFormName.value = currentAccount.lastName;
       editFormNumber.value = currentAccount.number;
-    
     }
     function addEditedAccount() {
       let id = editFormId.value;
@@ -129,7 +129,6 @@ createTable(results);
         number : number,
       }
       db[num] = editedAccount;
-    
       createTable(db);
     }
     
@@ -166,7 +165,6 @@ createTable(results);
           db.splice(index,1); 
           createTable(db);
           displayTable();
-        
     }
     
     function save() {

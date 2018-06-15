@@ -14,17 +14,14 @@
 #search {
     display: block;
     margin: 15px auto;
+    width: 280px;
 }
-.fa-search {
-    position: absolute;
-    right: 837px;
-    top: 163px;
+.search {
+    height: 30px;
+    line-height: 2px;
     border: 1px solid gray;
-    padding: 6px 8px;
-    cursor: pointer;
-    left: 249px;
-    top: 169px;
-    width: 33px;
+    color: black;
+    
 }
 #validate-form {
     color: red;
