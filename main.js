@@ -20,11 +20,10 @@ window.addEventListener('beforeunload',function () {
     let formBtn = document.querySelector('#formBtn');
     let formId = document.querySelector('#form-id');
     let formName = document.querySelector('#form-name');
-    let formDeposit = document.querySelector('#form-deposit');
-    let formcCard = document.querySelector('#form-cCard');
+    let formNumber = document.querySelector('#form-number');
     let editFormId = document.querySelector('#edit-form-id');
     let editFormName = document.querySelector('#edit-form-name');
-    let editFormDeposit = document.querySelector('#edit-form-deposit');
+    let editFormNumber = document.querySelector('#edit-form-number');
     let editFormCard = document.querySelector('#edit-form-cCard');
     let editFormBtn = document.querySelector('#edit-formBtn');
     let validate = document.querySelector('#validate-form');
@@ -94,7 +93,7 @@ createTable(results);
         text += '<tr>';
         text += '<td>'+db[i].id+'</td>';
         text += '<td>'+db[i].name+'</td>';
-        text += '<td>'+db[i].deposit+'</td>';
+        text += '<td>'+db[i].number+'</td>';
         text += '<td><button id="'+i+'"class="btn btn-danger btn-sm delete">Delete</button></td>';
         text += '<td><button class="btn btn-warning btn-sm edit" data-num="'+i+'">&nbsp;Edit</button></td>';
         text += '</tr>'
@@ -117,17 +116,17 @@ createTable(results);
       let currentAccount = db[num];
       editFormId.value = currentAccount.id;
       editFormName.value = currentAccount.name;
-      editFormDeposit.value = currentAccount.deposit;
+      editFormNumber.value = currentAccount.number;
     
     }
     function addEditedAccount() {
       let id = editFormId.value;
       let name = editFormName.value;
-      let deposit = editFormDeposit.value;
+      let number = editFormNumber.value;
       let editedAccount = {
         id : id,
         name : name,
-        deposit : deposit,
+        number : number,
       }
       db[num] = editedAccount;
     
@@ -135,24 +134,24 @@ createTable(results);
     }
     
     function saveAccount() {
-    let formDepositValue = document.querySelector('#form-deposit').value;
+    let formNumberValue = document.querySelector('#form-number').value;
      
-      if (isNaN(formDepositValue) || formDepositValue < 1) {
+      if (isNaN(formNumberValue) || formNumberValue < 1) {
         validate.style.display = "block";
         saveAccount();
     } else {
         let id = formId.value;
         let name = formName.value;
-        let deposit = formDeposit.value;
+        let number = formNumber.value;
         let newAccount = {
             id : id,
             name : name,
-            deposit : deposit,
+            number : number,
           }
           db.push(newAccount);
           formId.value = "";
           formName.value = "";
-          formDeposit.value = "";
+          formNumber.value = "";
           createTable(db);
           displayTable();
     }
@@ -185,7 +184,7 @@ createTable(results);
         text += '<tr>';
         text += '<td>'+allAccounts[i].id+'</td>';
         text += '<td>'+allAccounts[i].name+'</td>';
-        text += '<td>'+allAccounts[i].deposit+'</td>';
+        text += '<td>'+allAccounts[i].number+'</td>';
         text += '</tr>'
       }
     tbody.innerHTML = text
