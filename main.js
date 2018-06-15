@@ -39,7 +39,7 @@ window.addEventListener('beforeunload',function () {
     editBtn.addEventListener('click',showEditTable);
     editFormBtn.addEventListener('click',addEditedAccount);
     searchBtn.addEventListener('click', searchLastName);
-    createTable(names);
+    createTable(db);
     
 
 
@@ -115,7 +115,7 @@ createTable(results);
       num = this.getAttribute('data-num');
       let currentAccount = db[num];
       editFormId.value = currentAccount.id;
-      editFormName.value = currentAccount.name;
+      editFormName.value = currentAccount.lastName;
       editFormNumber.value = currentAccount.number;
     
     }
@@ -190,4 +190,3 @@ createTable(results);
       }
     tbody.innerHTML = text
     }
-    
