@@ -3,6 +3,7 @@ window.addEventListener('beforeunload',function () {
     })
     if(localStorage.db){
       var db = JSON.parse(localStorage.db)
+      var localArray = JSON.parse(localStorage.db);
     }else {
       var db =[];
     }
@@ -55,28 +56,33 @@ for (let i = 0; i < db.length; i++) {
   }
 
 }
-  createTable(results);
-  displayTable();
+createTable(results);
 }
 
 
     function displayTable() { 
       mainTable.style.display = "block";
       accountView.style.display = "block";
+      searchInput.style.display = "block";
+      searchBtn.style.display = "block";
       addView.style.display = "none";
       editView.style.display = "none";
       editFormView.style.display = "none";
-      
       searchInput.value = "";
+      createTable(db);
     }
     function displayForm() {
       addView.style.display = "block";
+      searchInput.style.display = "none";
+      searchBtn.style.display = "none";
       accountView.style.display = "none";
       editView.style.display = "none";
       editFormView.style.display = "none";
    
     }
     function showEditTable() {
+      searchInput.style.display = "block";
+      searchBtn.style.display = "block";
       editView.style.display = "block";
       accountView.style.display = "none";
       addView.style.display = "none";
