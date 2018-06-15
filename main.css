@@ -32,30 +32,3 @@
 
 }
 
-@media all and (min-width:370px) {
-    .fa-search {
-        left: 276px;
-        top: 131px;
-    }
-}
-@media all and (min-width:400px) {
-    .fa-search {
-        left: 295px;
-    }
-}
-@media all and (min-width:768px) {
-    .fa-search {
-        left: 473px;
-        top:163px;
-    }
-}
-@media all and (min-width:920px) {
-    .fa-search {
-        left: 601px;
-    }
-}
-@media all and (min-width:1200px) {
-    .fa-search {
-        left: 1048px;
-    }
-}
