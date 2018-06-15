@@ -39,7 +39,7 @@ window.addEventListener('beforeunload',function () {
     editBtn.addEventListener('click',showEditTable);
     editFormBtn.addEventListener('click',addEditedAccount);
     searchBtn.addEventListener('click', searchLastName);
-    createTable(db);
+    createTable(names);
     
 
 
@@ -48,7 +48,7 @@ function searchLastName() {
   let filter = searchInput.value.toUpperCase();
   let results = [];
 for (let i = 0; i < db.length; i++) {
-  let LastNames = db[i].name;
+  let LastNames = db[i].lastName;
   if (LastNames.toUpperCase() === filter){
     results.push(db[i]);
     
@@ -92,7 +92,7 @@ createTable(results);
       for (var i = 0; i < db.length; i++) {
         text += '<tr>';
         text += '<td>'+db[i].id+'</td>';
-        text += '<td>'+db[i].name+'</td>';
+        text += '<td>'+db[i].lastName+'</td>';
         text += '<td>'+db[i].number+'</td>';
         text += '<td><button id="'+i+'"class="btn btn-danger btn-sm delete">Delete</button></td>';
         text += '<td><button class="btn btn-warning btn-sm edit" data-num="'+i+'">&nbsp;Edit</button></td>';
@@ -121,11 +121,11 @@ createTable(results);
     }
     function addEditedAccount() {
       let id = editFormId.value;
-      let name = editFormName.value;
+      let lastName = editFormName.value;
       let number = editFormNumber.value;
       let editedAccount = {
         id : id,
-        name : name,
+        lastName : lastName,
         number : number,
       }
       db[num] = editedAccount;
@@ -141,11 +141,11 @@ createTable(results);
         saveAccount();
     } else {
         let id = formId.value;
-        let name = formName.value;
+        let lastName = formName.value;
         let number = formNumber.value;
         let newAccount = {
             id : id,
-            name : name,
+            lastName : lastName,
             number : number,
           }
           db.push(newAccount);
@@ -154,6 +154,7 @@ createTable(results);
           formNumber.value = "";
           createTable(db);
           displayTable();
+          validate.style.display = "none";
     }
       
       
@@ -183,7 +184,7 @@ createTable(results);
       for (var i = 0; i < allAccounts.length; i++) {
         text += '<tr>';
         text += '<td>'+allAccounts[i].id+'</td>';
-        text += '<td>'+allAccounts[i].name+'</td>';
+        text += '<td>'+allAccounts[i].lastName+'</td>';
         text += '<td>'+allAccounts[i].number+'</td>';
         text += '</tr>'
       }
