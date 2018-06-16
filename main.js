@@ -158,6 +158,8 @@ function addEditedAccount() {
     number: number,
   }
   db[num] = editedAccount;
+  searchInput.style.display = "block";
+  searchBtn.style.display = "block"
   createTable(db);
 }
 
