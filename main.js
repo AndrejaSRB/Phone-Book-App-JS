@@ -30,8 +30,13 @@ window.addEventListener('beforeunload',function () {
     let searchBtn = document.querySelector('.search');
     let searchInput = document.querySelector('#search');
     let mainTable = document.querySelector('#main-table');
-
+    let mainTbody = document.querySelector('#main-tbody');
+    let mainRow = document.querySelector('#main-row');
+    let editTable = document.querySelector('#edit-table');
+    let editMainRow = document.querySelector('#edit-main-row');
     let num;
+
+
     //listeneres
     accBtn.addEventListener('click',displayTable);
     addBtn.addEventListener('click',displayForm);
@@ -45,23 +50,30 @@ window.addEventListener('beforeunload',function () {
         searchLastName();
       }
   });
+
+
   createTable(db);
     
 
-
-
+//function for searching inputs
 function searchLastName() {
   let filter = searchInput.value.toUpperCase();
-  let results = [];
-for (let i = 0; i < db.length; i++) {
-  let LastNames = db[i].lastName;
-  if (LastNames.toUpperCase() === filter){
-    results.push(db[i]);
+  let mainTr = mainTable.getElementsByTagName('tr');
+  let editTr = editTable.getElementsByTagName('tr');  
+  for (i = 0; i < mainTr.length; i++) {
+    let mainTd = mainTr[i].children[1];
+    let editTd = editTr[i].children[1];
+    if (mainTd.innerHTML.toUpperCase().indexOf(filter) > -1  || editTd.innerHTML.toUpperCase().indexOf(filter) > -1)  {
+      editMainRow.style.display = "table-row";
+      editTr[i].style.display = "";
+      mainRow.style.display = "table-row";
+      mainTr[i].style.display = "";
+  } else {
+    editMainRow.style.display = "table-row";
+    editTr[i].style.display = "none";
+    }
   }
 }
-createTable(results);
-}
-
 
     function displayTable() { 
       mainTable.style.display = "block";
@@ -74,6 +86,8 @@ createTable(results);
       searchInput.value = "";
       createTable(db);
     }
+
+
     function displayForm() {
       addView.style.display = "block";
       searchInput.style.display = "none";
@@ -82,6 +96,8 @@ createTable(results);
       editView.style.display = "none";
       editFormView.style.display = "none";
     }
+
+
     function showEditTable() {
       searchInput.style.display = "block";
       searchBtn.style.display = "block";
@@ -95,11 +111,10 @@ createTable(results);
         text += '<td>'+db[i].id+'</td>';
         text += '<td>'+db[i].lastName+'</td>';
         text += '<td>'+db[i].number+'</td>';
-        text += '<td><button id="'+i+'"class="btn btn-danger btn-sm delete">Delete</button></td>';
-        text += '<td><button class="btn btn-warning btn-sm edit" data-num="'+i+'">&nbsp;Edit</button></td>';
+        text += '<td ><button id="'+i+'"class="btn btn-danger btn-sm delete">Delete</button></td>';
+        text += '<td ><button class="btn btn-warning btn-sm edit" data-num="'+i+'">&nbsp;Edit</button></td>';
         text += '</tr>'
       }
-    
     editTbody.innerHTML = text;
     let deleteBtns = document.querySelectorAll('.delete');
     let editBtns = document.querySelectorAll('.edit');
@@ -108,6 +123,7 @@ createTable(results);
       editBtns[i].addEventListener('click', showEditForm)
       }
     }
+
     function showEditForm() {
       addView.style.display = "none";
       accountView.style.display = "none";
@@ -119,6 +135,7 @@ createTable(results);
       editFormName.value = currentAccount.lastName;
       editFormNumber.value = currentAccount.number;
     }
+
     function addEditedAccount() {
       let id = editFormId.value;
       let lastName = editFormName.value;
@@ -134,7 +151,6 @@ createTable(results);
     
     function saveAccount() {
     let formNumberValue = document.querySelector('#form-number').value;
-     
       if (isNaN(formNumberValue) || formNumberValue < 1) {
         validate.style.display = "block";
         saveAccount();
@@ -154,19 +170,17 @@ createTable(results);
           createTable(db);
           displayTable();
           validate.style.display = "none";
+      }
     }
-      
-      
-    
-    
-    }
+
     function deleteAccount() {
           let index = this.id;
           db.splice(index,1); 
           createTable(db);
           displayTable();
     }
-    
+
+    // saving to local storage
     function save() {
       localStorage.db = JSON.stringify(db)
     }
